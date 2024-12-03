@@ -1,5 +1,6 @@
 import React from 'react';
-import './Header.css'
+import './Header.scss'
+import logo from '../../assets/logo.png'
 
 
 function Header() {
@@ -20,7 +21,7 @@ function Header() {
                         <div className="header_centre_menu_btn_line"></div>
                         <div className="header_centre_menu_btn_line"></div>
                     </div>
-                    <img className="logo" src="img/logo.png">
+                    <img className="logo" src={logo}>
 
                     </img>
                     <div className="header_centre_btn_cat">
@@ -93,6 +94,5 @@ function Header() {
         </div>
     );
 }
-
 
 export default Header;
