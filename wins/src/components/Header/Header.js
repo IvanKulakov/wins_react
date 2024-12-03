@@ -1,6 +1,10 @@
 import React from 'react';
 import './Header.scss'
 import logo from '../../assets/logo.png'
+import newIcon from '../../assets/Haeder/new.png'
+import promoIcon from '../../assets/Haeder/promo.png'
+import saleIcon from '../../assets/Haeder/sale.png'
+import bestIcon from '../../assets/Haeder/best.png'
 
 
 function Header() {
@@ -89,6 +93,28 @@ function Header() {
                         </svg>
                     </div>
 
+                </div>
+            </div>
+            <div className="header_bottom">
+                <div className="wrapper">
+                    <nav className="header_bottom_nav">
+                        <div className="header_bottom_nav_link">
+                            <img src={newIcon}/>
+                            <p className="header_bottom_nav_link_text">Новинки</p>
+                        </div>
+                        <div className="header_bottom_nav_link">
+                            <img src={saleIcon}/>
+                            <p className="header_bottom_nav_link_text">Товари зі знижкою</p>
+                        </div>
+                        <div className="header_bottom_nav_link">
+                            <img src={promoIcon}/>
+                            <p className="header_bottom_nav_link_text">Промо-Акції</p>
+                        </div>
+                        <div className="header_bottom_nav_link">
+                            <img src={bestIcon}/>
+                            <p className="header_bottom_nav_link_text">Хіти продажу</p>
+                        </div>
+                    </nav>
                 </div>
             </div>
         </div>
