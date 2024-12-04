@@ -1,0 +1,132 @@
+.item{
+  padding: 15px;
+  border: 1px solid #EEEEEE;
+  width: 260px;
+  height: 444px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.item_img{
+  width: 230px;
+  height: 230px;
+  border-radius: 16px;
+  background: #F5F5F7;
+  position: relative;
+}
+.label_new{
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  padding: 6px 10px;
+  border: 2px solid #6AA84F;
+  width: fit-content;
+  box-sizing: border-box;
+  border-bottom-left-radius: 13px;
+  border-bottom-right-radius: 13px;
+  border-top-left-radius: 13px;
+}
+.label_sale{
+  border: 2px solid #FF017F;
+}
+.label_new_p{
+  font-family: Helvetica;
+  font-size: 12px;
+  font-weight: 700;
+  color: #6AA84F;
+}
+.label_sale_p{
+  color: #3960FF;
+}
+.item_btns{
+  display: flex;
+  flex-direction: row;
+}
+.item_title{
+  font-family: Helvetica;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 16px;
+  text-align: left;
+  color: #1E1E1E;
+}
+.item_availability{
+  font-family: Helvetica;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 16px;
+  text-align: left;
+  color: #008641;
+}
+.item_price{
+  font-family: Helvetica;
+  font-size: 18px;
+  font-weight: 400;
+  text-align: left;
+  color: #1E1E1E;
+}
+.quantity_btn{
+  padding: 10px 6px;
+  background: #F5F5F7;
+  border-radius: 40px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: fit-content;
+}
+.quantity_btn_less{
+  font-size: 20px;
+  font-weight: 400;
+  color: #1E1E1E80;
+}
+.quantity{
+  font-family: Helvetica;
+  font-size: 14px;
+  font-weight: 400;
+  color: #1E1E1E;
+  margin: 0 18px;
+}
+.buy_btn{
+  padding: 8px 18px;
+  border-radius: 40px;
+  background: #3960FF;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-left: 15px;
+  width: fit-content;
+}
+.buy_btn_p{
+  color: #FFFFFF;
+  font-family: Helvetica;
+  font-size: 14px;
+  font-weight: 400;
+  margin-left: 8px;
+
+}
+.item_price_old{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.item_price_old_p{
+  font-family: Helvetica;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 14px;
+  text-align: left;
+  text-decoration: line-through;
+  color: #777777;
+}
+.item_price_old_calc{
+  padding: 2px 4px;
+  color: #777777;
+  border: 2px solid #777777;
+  border-radius: 6px;
+  font-family: Helvetica;
+  font-size: 11px;
+  font-weight: 400;
+  margin-left: 6px;
+}

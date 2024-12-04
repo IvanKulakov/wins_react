@@ -1,9 +1,12 @@
 import React from 'react';
+import About from "./About";
+import NewMin from "./NewMin";
 
 function Main () {
     return(
         <div>
-            <p>main</p>
+            <NewMin />
+            <About />
         </div>
     )
 }
