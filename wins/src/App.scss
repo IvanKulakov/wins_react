@@ -2,10 +2,13 @@
     font-family: 'Helvetica';
     src: url(./fonts/helvetica_regular.otf) format('opentype');
 }
-
+@font-face {
+    font-family: 'Ubuntu';
+    src: url(./fonts/Ubuntu-Regular.ttf) format('ttf');
+}
 
 .main {
-    font-family: "Helvetica", sans-serif;
+    font-family: "Helvetica", "Ubuntu", sans-serif;
     background: #FFFFFF;
 }
 .wrapper {

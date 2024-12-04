@@ -12,10 +12,10 @@ function Header() {
         <div>
             <div className="header_top">
                 <div className="wrapper header_top_content">
-                    <p className="header_top_content_p">Подарункові сертифікати</p>
-                    <p className="header_top_content_p">Доставка та оплата</p>
-                    <p className="header_top_content_p">Обмін та повернення</p>
-                    <p className="header_top_content_p">Контакти</p>
+                    <a className="header_top_content_p">Подарункові сертифікати</a>
+                    <a className="header_top_content_p" href={'/delivery_payment'}>Доставка та оплата</a>
+                    <a className="header_top_content_p">Обмін та повернення</a>
+                    <a className="header_top_content_p">Контакти</a>
                 </div>
             </div>
             <div className="header_centre">
@@ -25,9 +25,9 @@ function Header() {
                         <div className="header_centre_menu_btn_line"></div>
                         <div className="header_centre_menu_btn_line"></div>
                     </div>
-                    <img className="logo" src={logo}>
-
-                    </img>
+                    <a href={'/'}>
+                        <img className="logo" src={logo}/>
+                    </a>
                     <div className="header_centre_btn_cat">
                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path
