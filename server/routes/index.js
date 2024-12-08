@@ -1,9 +1,16 @@
-const express = require("express");
-const router = express.Router();
-const path = require("path");
+const Router = require('express')
+const router = new Router()
+const userRouter = require('./userRoutes')
+const brandRouter = require('./brandRoutes')
+const typeRouter = require('./typeRoutes')
+const productsRouter = require('./productsRoutes')
 
-router.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "../static/index.html"));
-});
 
-module.exports = router;
+router.use('/user', userRouter)
+router.use('/type', typeRouter)
+router.use('/brand', brandRouter)
+router.use('/products', productsRouter)
+
+
+
+module.exports = router
