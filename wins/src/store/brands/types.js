@@ -1,0 +1,9 @@
+const SET_BRANDS_DATA = 'wins/brands/SET_BRANDS_DATA';
+const SET_BRANDS_LOADING = 'wins/brands/SET_BRANDS_LOADING';
+const SET_TOTAL_BRANDS_COUNT = 'wins/brands/SET_TOTAL_BRANDS_COUNT';
+
+export default {
+  SET_BRANDS_DATA,
+  SET_BRANDS_LOADING,
+  SET_TOTAL_BRANDS_COUNT,
+};

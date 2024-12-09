@@ -6,12 +6,13 @@ const ApiError = require('../error/ApiError')
 class ProductsController {
     async create(req, res, next){
         try{
-            const {name, price, about, quantity, option, stars,info, brandId, typeId} = req.body
+            const {name, price, about, quantity, option, stars, brandId, typeId} = req.body
             const {img} = req.files
             let fileName = uuid.v4()+".jpg"
             img.mv(path.resolve(__dirname, '..', 'static', fileName))
 
             const product = await Product.create({name, price, about, quantity, option, stars, img:fileName, brandId, typeId})
+            // const product = await Product.create({name, price, about, quantity, option, stars, brandId, typeId})
 
             return res.json(product)
         }
@@ -19,11 +20,11 @@ class ProductsController {
             next(ApiError.badRequest(e.message))
         }
     }
-    async getAll(req, res, limit, page){
+    async getAll(req, res){
+        let {brandId, typeId, limit, page} = req.query
         page = page || 1
         limit = limit || 9
         let offset = page * limit - limit
-        let {brandId, typeId} = req.query
         let product;
         if(!brandId && !typeId){
             product = await Product.findAndCountAll({limit, offset})
