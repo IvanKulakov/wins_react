@@ -1,0 +1,9 @@
+const SET_TYPE_DATA = 'wins/type/SET_TYPE_DATA';
+const SET_TYPE_LOADING = 'wins/type/SET_TYPE_LOADING';
+const SET_TOTAL_TYPE_COUNT = 'wins/type/SET_TOTAL_TYPE_COUNT';
+
+export default {
+  SET_TYPE_DATA,
+  SET_TYPE_LOADING,
+  SET_TOTAL_TYPE_COUNT,
+};
