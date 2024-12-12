@@ -1,16 +1,9 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import './NewMin.scss'
 import Item from "../../components/Item/Item";
-import {connect} from "react-redux";
-import {itemsOperations} from "../../store/items";
-import {brandsOperations} from "../../store/brands";
 
 
-function NewMin ({ dispatch }) {
-    useEffect(()=>{
-        dispatch(itemsOperations.getItems());
-        dispatch(brandsOperations.getBrands())
-    }, [dispatch])
+function NewMin () {
     return(
         <div className="item_block">
             <div className="wrapper">
@@ -26,10 +19,5 @@ function NewMin ({ dispatch }) {
         </div>
     )
 }
-const mapStateToProps = (state) => {
-    return {
-        item: state.items.data,
-        brands: state.brands.data,
-    };
-};
-export default connect(mapStateToProps)(NewMin);
+
+export default NewMin;

@@ -5,10 +5,13 @@ import deliveryImg from '../../assets/DeliveryPayment/delivery.png'
 import freeDelImg from '../../assets/DeliveryPayment/free_deliver.png'
 import backImg from '../../assets/DeliveryPayment/Figure.png'
 import './DeliveryPayment.scss'
+import Header from "../../components/Header/Header";
 
 function DeliveryPayment () {
     return(
         <div>
+            <Header />
+
             <div className='wrapper'>
                 <div className="dp_top_img_box">
                     <img src={ topImg }/>
