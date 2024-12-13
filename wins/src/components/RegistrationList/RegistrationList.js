@@ -34,7 +34,11 @@ const RegistrationList = () => {
       data: body,
     })
       .then((response) => {
-        if (response.status === 200) hist.push('/use/login');
+        if (response.status === 200)
+            localStorage.setItem('token', JSON.stringify(response.data.token));
+
+          console.log(response);
+            // hist.push('/api/user/auth');
         // message.success('Спасибо за регистрацию!', 2);
       })
       .catch((error) => {

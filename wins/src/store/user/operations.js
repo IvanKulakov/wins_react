@@ -3,7 +3,7 @@ import actions from './actions';
 import actionsToken from '../token/actions';
 
 const setCustomer = (userData) => (dispatch) => {
-  axios.post(`/api/customers`, userData).then((res) => {
+  axios.post(`/api/use/registration`, userData).then((res) => {
     dispatch(actions.setCustomerData(res.data));
     dispatch(actions.setCustomerLoading(false));
   });
@@ -11,7 +11,7 @@ const setCustomer = (userData) => (dispatch) => {
 const setLoginCustomer = (userData) => (dispatch) => {
   axios({
     method: 'post',
-    url: `/api/customers/login`,
+    url: `/api/user/login`,
     headers: { 'Content-Type': 'application/json' },
     data: userData,
   })
