@@ -1,14 +1,19 @@
 import React from 'react';
 import Header from "../../components/Header/Header";
 import RegistrationList from "../../components/RegistrationList/RegistrationList";
+import Login from "../../components/Login/Login";
 
-function Login(props) {
+function LoginList(props) {
     return (
         <div>
             <Header />
-            <RegistrationList />
+
+            {/*<RegistrationList />*/}
+            {/*<p> or </p>*/}
+            <Login />
+
         </div>
     );
 }
 
-export default Login;
+export default LoginList;

@@ -37,7 +37,8 @@ class UserController {
                 return next(ApiError.internal("bad password"))
             }
             const token = generateJwt(user.id, user.email, user.name, user.role )
-        return res.json({token})
+            const userData = {name: user.name, role:user.role}
+        return res.json({token, userData})
     }
     async check(req, res, next){
         const token = generateJwt(user.id, user.email, user.name, user.role )

@@ -82,44 +82,6 @@ const RegistrationList = () => {
                 <p className="error__message error__message--reg">{errors.name}</p>
               )}
             </div>
-            {/*<div style={{ position: 'relative' }}>*/}
-            {/*  <p className="input-from__wrapper input-from__wrapper--reg">*/}
-            {/*    <label htmlFor="lastName" title="lastName">*/}
-            {/*      Фамилия*/}
-            {/*      <input*/}
-            {/*        className="input-form input-form--reg"*/}
-            {/*        placeholder="Введите Вашу фамилию"*/}
-            {/*        type="text"*/}
-            {/*        name="lastName"*/}
-            {/*        onChange={handleChange}*/}
-            {/*        onBlur={handleBlur}*/}
-            {/*        value={values.lastName}*/}
-            {/*      />*/}
-            {/*    </label>*/}
-            {/*  </p>*/}
-            {/*  {touched.lastName && errors.lastName && (*/}
-            {/*    <p className="error__message error__message--reg">{errors.lastName}</p>*/}
-            {/*  )}*/}
-            {/*</div>*/}
-            {/*<div style={{ position: 'relative' }}>*/}
-            {/*  <p className="input-from__wrapper input-from__wrapper--reg">*/}
-            {/*    <label htmlFor="login" title="login">*/}
-            {/*      Логин*/}
-            {/*      <input*/}
-            {/*        className="input-form input-form--reg"*/}
-            {/*        placeholder="Введите ник"*/}
-            {/*        type="text"*/}
-            {/*        name="login"*/}
-            {/*        onChange={handleChange}*/}
-            {/*        onBlur={handleBlur}*/}
-            {/*        value={values.login}*/}
-            {/*      />*/}
-            {/*    </label>*/}
-            {/*  </p>*/}
-            {/*  {touched.login && errors.login && (*/}
-            {/*    <p className="error__message error__message--reg">{errors.login}</p>*/}
-            {/*  )}*/}
-            {/*</div>*/}
             <div style={{ position: 'relative' }}>
               <p className="input-from__wrapper input-from__wrapper--reg">
                 <label htmlFor="password" title="password">

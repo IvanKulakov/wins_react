@@ -13,8 +13,6 @@ const reducer = combineReducers({
     type: typeReducer,
     token: tokenReducer,
     user: customerReducer,
-
-
 })
 
 

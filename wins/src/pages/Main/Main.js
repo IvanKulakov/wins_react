@@ -5,12 +5,16 @@ import {connect} from "react-redux";
 import {itemsOperations} from "../../store/items";
 import {brandsOperations} from "../../store/brands";
 import Header from "../../components/Header/Header";
+import {tokenOperations} from "../../store/token";
+import {customerOperations} from "../../store/user";
 
 function Main ({ dispatch }) {
     useEffect(()=>{
         dispatch(itemsOperations.getItems());
         dispatch(brandsOperations.getBrands())
+        dispatch(tokenOperations.getToken())
     }, [dispatch])
+
     return(
         <div>
             <Header />

@@ -1,8 +1,7 @@
 import { Outlet, Navigate } from "react-router-dom"
 
-function ProtectedRoutes(props) {
+function ProtectedRoutes() {
     let admin
-    console.log(props);
     return admin ? <Outlet /> : <Navigate to="/login"/>
 }
 
