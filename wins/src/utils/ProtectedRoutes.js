@@ -1,15 +1,11 @@
-import { Outlet, Navigate } from "react-router-dom"
-import {connect} from "react-redux";
+import { Navigate, useLocation} from "react-router-dom"
 
-function ProtectedRoutes({ dispatch, user }) {
-    let admin = !!user.name;
-    console.log(admin)
-    return ( admin ? <Outlet /> : <Navigate to="/login"/>)
+function ProtectedRoutes({ user, children }) {
+    const location = useLocation();
+    if(user.role !== "ADMIN"){
+        return <Navigate to="/login"/>
+    }
+    return children
 }
-const mapStateToProps = (state) => {
-    return {
-        user: state.user.data,
-    };
-};
 
-export default connect(mapStateToProps) (ProtectedRoutes);
+export default ProtectedRoutes;

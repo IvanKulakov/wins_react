@@ -7,7 +7,6 @@ import {BrowserRouter} from "react-router";
 function App() {
   return (
       <div className="App">
-       {/*<Header />*/}
           <AppRoutes />
        <Footer />
       </div>

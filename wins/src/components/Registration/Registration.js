@@ -6,16 +6,16 @@ import * as yup from 'yup';
 import {NumericFormat} from 'react-number-format';
 import './Form.scss';
 
-const RegistrationList = () => {
+const Registration = () => {
   const hist = useNavigate();
   const validationSchema = yup.object().shape({
     name: yup.string().typeError('Вводите строкой').required('Поле обязательно для ввода'),
     // lastName: yup.string().typeError('Вводите строкой').required('Поле обязательно для ввода'),
     // login: yup
     //   .string()
-    //   .min(4, 'Login should be 4 chars minimum.')
-    //   .max(8, 'Login should be 8 chars maximum.')
-    //   .matches(/[a-zA-Z]/, 'Login can only contain Latin letters.')
+    //   .min(4, 'LoginList should be 4 chars minimum.')
+    //   .max(8, 'LoginList should be 8 chars maximum.')
+    //   .matches(/[a-zA-Z]/, 'LoginList can only contain Latin letters.')
     //   .typeError('Вводите строкой')
     //   .required('Поле обязательно для ввода'),
     password: yup
@@ -158,4 +158,4 @@ const RegistrationList = () => {
   );
 };
 
-export default RegistrationList;
+export default Registration;

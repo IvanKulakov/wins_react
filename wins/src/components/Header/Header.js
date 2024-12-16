@@ -15,7 +15,7 @@ function Header() {
                 <div className="wrapper header_top_content">
                     <a className="header_top_content_p">Подарункові сертифікати</a>
                     <Link className="header_top_content_p" to='/delivery_payment'>Доставка та оплата</Link>
-                    <a className="header_top_content_p">Обмін та повернення</a>
+                    <Link className="header_top_content_p" to='/admin'>Обмін та повернення</Link>
                     <a className="header_top_content_p">Контакти</a>
                 </div>
             </div>

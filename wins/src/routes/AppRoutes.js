@@ -9,11 +9,14 @@ import Main from "../pages/Main/Main";
 import DeliveryPayment from "../pages/Delivery&payment/DeliveryPayment";
 import NotFound from "../pages/NotFound/NotFound";
 import AdminTool from "../pages/Admin/AdminTool";
-import Login from "../pages/Login/Login";
+import Login from "../pages/LoginList/LoginList";
 import {connect} from "react-redux";
 import {tokenOperations} from "../store/token";
 import axios from "axios";
 import {customerOperations} from "../store/user";
+import ProtectedRoutes from "../utils/ProtectedRoutes";
+import RegistartionList from "../pages/RegistrationList/RegistartionList";
+import UserInfo from "../pages/UserInfo/UserInfo";
 
 function AppRoutes({ dispatch, user, token }) {
     useEffect(() => {
@@ -27,15 +30,21 @@ function AppRoutes({ dispatch, user, token }) {
         // }
         dispatch(tokenOperations.getToken());
         }, [dispatch]);
-    const isAuth = !!user.name;
-    console.log(isAuth);
+        const isAuth = !!user.name;
     return (
         <Router>
             <Routes>
                 <Route path='/main' element={<Main />}/>
                 <Route path="/" element={<Navigate replace to="/main" />} />
-                <Route path="/login" element={<Login />} />
-                <Route path="/admin" element={isAuth ? <AdminTool /> : <Navigate replace to="/login" />}/>
+                <Route path="/login" element={isAuth ? <Navigate to="/userInfo"/> : <Login />} />
+                <Route path="/registration" element={isAuth ? <Navigate to="/userInfo"/> : <RegistartionList />} />
+                <Route path="/userinfo" element={<UserInfo />} />
+                <Route path='/admin' element={
+                    <ProtectedRoutes user={user}>
+                        <AdminTool />
+                    </ProtectedRoutes>
+                }
+                />
                 <Route path='/delivery_payment' element={<DeliveryPayment />}/>
                 <Route path="*" element={<NotFound />} />
             </Routes>
