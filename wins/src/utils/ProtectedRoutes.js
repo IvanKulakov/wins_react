@@ -1,8 +1,15 @@
 import { Outlet, Navigate } from "react-router-dom"
+import {connect} from "react-redux";
 
-function ProtectedRoutes() {
-    let admin
-    return admin ? <Outlet /> : <Navigate to="/login"/>
+function ProtectedRoutes({ dispatch, user }) {
+    let admin = !!user.name;
+    console.log(admin)
+    return ( admin ? <Outlet /> : <Navigate to="/login"/>)
 }
+const mapStateToProps = (state) => {
+    return {
+        user: state.user.data,
+    };
+};
 
-export default ProtectedRoutes
+export default connect(mapStateToProps) (ProtectedRoutes);

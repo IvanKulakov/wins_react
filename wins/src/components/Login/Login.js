@@ -11,9 +11,8 @@ import {connect} from "react-redux";
 const Login = ({ dispatch }) => {
     const hist = useNavigate();
     const setLogin = (data) =>{
-    const body = JSON.stringify(data);
-    dispatch(customerOperations.setLoginCustomer(body));
-        console.log(body)
+    dispatch(customerOperations.setLoginCustomer(JSON.stringify(data)));
+        hist('/');
     }
     const validationSchema = yup.object().shape({
         password: yup
@@ -95,6 +94,7 @@ const Login = ({ dispatch }) => {
 const mapStateToProps = (state) => {
     return {
         token: state.token.data,
+        user: state.user.data,
     };
 };
 export default connect(mapStateToProps) (Login);

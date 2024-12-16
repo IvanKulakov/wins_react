@@ -17,6 +17,8 @@ const setLoginCustomer = (userData) => (dispatch) => {
   })
     .then((response) => {
       dispatch(actionsToken.setToken(response.data.token));
+      dispatch(actions.setCustomerData(response.data.userData));
+
       localStorage.setItem('token', JSON.stringify(response.data.token));
     })
     .catch((error) => {
@@ -27,7 +29,9 @@ const setLoginCustomer = (userData) => (dispatch) => {
 
 const getCustomer = () => (dispatch) => {
   axios.get(`/api/user/auth`).then((res) => {
-    dispatch(actions.setCustomerData(res.data));
+    dispatch(actionsToken.setToken(res.data.token));
+    localStorage.setItem('token', JSON.stringify(res.data.token));
+    dispatch(actions.setCustomerData(res.data.userData));
     dispatch(actions.setCustomerLoading(false));
   });
 };
