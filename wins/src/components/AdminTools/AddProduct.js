@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useMemo, useState} from 'react';
 import {Button, Input, Select, Upload} from 'antd';
 import { UploadOutlined } from '@ant-design/icons';
 import { connect } from 'react-redux';
@@ -14,9 +14,6 @@ const AddProduct = ({ brands, type, dispatch }) => {
         dispatch(brandsOperations.getBrands())
     }, [dispatch]);
   const [imgURL1, setImgURL1] = useState('');
-  const [imgURL2, setImgURL2] = useState('');
-  const [imgURL3, setImgURL3] = useState('');
-  const [imgURL4, setImgURL4] = useState('');
   const [brand, setBrand] = useState('');
   const [types, setTypes] = useState('');
   const [name, setName] = useState('');
@@ -59,15 +56,7 @@ const AddProduct = ({ brands, type, dispatch }) => {
         >
             <Button icon={<UploadOutlined />}>Upload (Max: 1)</Button>
         </Upload>
-
-
-      {/*<Input placeholder="ImgURL_1"*/}
-      {/*       type="file"*/}
-      {/*       value={imgURL1} onInput={(e) => setImgURL1(e.target.value)} />*/}
-      {/*<Input placeholder="ImgURL_2" value={imgURL2} onInput={(e) => setImgURL2(e.target.value)} />*/}
-      {/*<Input placeholder="ImgURL_3" value={imgURL3} onInput={(e) => setImgURL3(e.target.value)} />*/}
-      {/*<Input placeholder="ImgURL_4" value={imgURL4} onInput={(e) => setImgURL4(e.target.value)} />*/}
-      <Input placeholder="name" value={name} onInput={(e) => setName(e.target.value)} />
+        <Input placeholder="name" value={name} onInput={(e) => setName(e.target.value)} />
       <Input
         placeholder="price"
         value={price}

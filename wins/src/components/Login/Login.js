@@ -13,7 +13,7 @@ const Login = ({ dispatch }) => {
     dispatch(customerOperations.setLoginCustomer(JSON.stringify(data)));
     dispatch(tokenOperations.getToken());
 
-        hist('/userinfo');
+        hist('/');
     }
     const validationSchema = yup.object().shape({
         password: yup

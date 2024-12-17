@@ -5,7 +5,7 @@ import AddType from "../../components/AdminTools/AddType";
 
 function AdminTool(props) {
     return (
-        <div>
+        <div className="wrapper">
             <Header />
             <p>ADMINTOOL</p>
             <AddProduct />

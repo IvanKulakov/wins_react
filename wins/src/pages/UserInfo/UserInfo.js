@@ -1,20 +1,24 @@
 import React, {useEffect} from 'react';
 import Header from "../../components/Header/Header";
-import Registration from "../../components/Registration/Registration";
 import {Link} from "react-router";
-import axios from "axios";
 import {customerOperations} from "../../store/user";
-import {tokenOperations} from "../../store/token";
 import {connect} from "react-redux";
+import axios from "axios";
+import {tokenOperations} from "../../store/token";
 
-function UserInfo({ dispatch, user, token }) {
-    useEffect(() => {
-        dispatch(customerOperations.getCustomer())
-        dispatch(tokenOperations.getToken());
-    }, [dispatch]);
+function UserInfo({ dispatch, token, user }) {
+        useEffect(() => {
+            const tokenAuth = JSON.parse(localStorage.getItem('token'));
+            if (tokenAuth) {
+                axios.defaults.headers.common.Authorization = tokenAuth;
+                dispatch(customerOperations.getCustomer())
+            }
+            // else {
+            //     axios.defaults.headers.common.Authorization = null;
+            // }
+            dispatch(tokenOperations.getToken());
+        }, [dispatch]);
     const {role} = user;
-    console.log(role)
-    const isAuth = !!user.name;
     return (
         <div>
             <Header />
@@ -32,6 +36,8 @@ function UserInfo({ dispatch, user, token }) {
 const mapStateToProps = (state) => {
     return {
         user: state.user.data,
+        token: state.token.data,
+
     };
 };
 
