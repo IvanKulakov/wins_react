@@ -1,18 +1,19 @@
 import React from 'react';
-import axios from 'axios';
 import { Formik } from 'formik';
 import {useNavigate} from 'react-router';
 import * as yup from 'yup';
-import {NumericFormat} from 'react-number-format';
 import './Form.scss';
 import {customerOperations} from "../../store/user";
 import {connect} from "react-redux";
+import {tokenOperations} from "../../store/token";
 
 const Login = ({ dispatch }) => {
     const hist = useNavigate();
     const setLogin = (data) =>{
     dispatch(customerOperations.setLoginCustomer(JSON.stringify(data)));
-        hist('/');
+    dispatch(tokenOperations.getToken());
+
+        hist('/userinfo');
     }
     const validationSchema = yup.object().shape({
         password: yup
