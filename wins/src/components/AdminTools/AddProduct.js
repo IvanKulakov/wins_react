@@ -14,11 +14,13 @@ const AddProduct = ({ brands, type, dispatch }) => {
         dispatch(brandsOperations.getBrands())
     }, [dispatch]);
   const [imgURL1, setImgURL1] = useState(null);
-  const [brand, setBrand] = useState('');
-  const [types, setTypes] = useState('');
+  const [brand, setBrand] = useState(1);
+  const [types, setTypes] = useState(0);
   const [name, setName] = useState('');
-  const [price, setPrice] = useState('');
-  const [quantity, setQuantity] = useState('');
+  const [price, setPrice] = useState(0);
+  const [quantity, setQuantity] = useState(0);
+  const [stars, setStars] = useState(0);
+  const [options, setOptions] = useState('');
   const [myCustomParam, setMyCustomParam] = useState('');
   const handleChangeBrands = (value) => {
       setBrand((brands.find((item) =>(item.name === value)).id));
@@ -39,11 +41,13 @@ const AddProduct = ({ brands, type, dispatch }) => {
     const newProduct = {
       name: name,
       price: price,
-      brand: brand,
-      type: types,
+      brandId: brand,
+      typeId: types,
       img: imgURL1,
       quantity: quantity,
       about: myCustomParam,
+      stars: stars,
+      options: options,
     };
     console.log(newProduct)
     dispatch(itemsOperations.newItem(newProduct));
