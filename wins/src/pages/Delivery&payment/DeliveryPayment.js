@@ -6,8 +6,22 @@ import freeDelImg from '../../assets/DeliveryPayment/free_deliver.png'
 import backImg from '../../assets/DeliveryPayment/Figure.png'
 import './DeliveryPayment.scss'
 import Header from "../../components/Header/Header";
+import {connect} from "react-redux";
 
-function DeliveryPayment () {
+function DeliveryPayment ({ dispatch , language}) {
+    let mainLang;
+    const uk = {
+        title1: "Способи оплати",
+    };
+    const ru = {
+        title1: "Способы оплаты",
+    };
+    if(language === "uk"){
+        mainLang = uk;
+    }
+    if(language === "ru"){
+        mainLang = ru;
+    }
     return(
         <div>
             <Header />
@@ -20,7 +34,7 @@ function DeliveryPayment () {
                     <img src={ payImg }/>
                     <div className="dp_content">
                         <h1>
-                            Способи оплати
+                            {mainLang.title1}
                         </h1>
                         <div className="dp_pay_content_box">
                             <svg width="11" height="11" viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -128,5 +142,10 @@ function DeliveryPayment () {
         </div>
     )
 }
+const mapStateToProps = (state) => {
+    return {
+        language: state.language.data,
+    };
+};
 
-export default DeliveryPayment;
+export default connect(mapStateToProps) (DeliveryPayment);

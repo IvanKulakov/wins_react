@@ -1,0 +1,7 @@
+const SET_LANGUAGE_DATA = 'wins/language/SET_LANGUAGEN_DATA';
+const SET_LANGUAGE_LOADING = 'wins/language/SET_LANGUAGE_LOADING';
+
+export default {
+  SET_LANGUAGE_DATA,
+  SET_LANGUAGE_LOADING,
+};

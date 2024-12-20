@@ -5,6 +5,7 @@ import brandsReducer from "./brands";
 import tokenReducer from "./token";
 import customerReducer from "./user";
 import typeReducer from "./type";
+import languageReducer from "./language";
 
 
 const reducer = combineReducers({
@@ -13,6 +14,7 @@ const reducer = combineReducers({
     type: typeReducer,
     token: tokenReducer,
     user: customerReducer,
+    language: languageReducer,
 })
 
 

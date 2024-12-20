@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import './Header.scss'
 import logo from '../../assets/logo.png'
 import newIcon from '../../assets/Haeder/new.png'
@@ -6,17 +6,60 @@ import promoIcon from '../../assets/Haeder/promo.png'
 import saleIcon from '../../assets/Haeder/sale.png'
 import bestIcon from '../../assets/Haeder/best.png'
 import { Link } from "react-router";
+import {languageOperations} from "../../store/language";
+import {connect} from "react-redux";
 
 
-function Header() {
+function Header({ dispatch, language }) {
+    useEffect(()=>{
+        if (!JSON.parse(localStorage.getItem('language'))) {
+            localStorage.setItem('language', JSON.stringify(`uk`));
+        }
+        dispatch(languageOperations.getLanguage())
+    }, [dispatch])
+    const onClickUk = () =>{
+        localStorage.setItem('language', JSON.stringify("uk"));
+        dispatch(languageOperations.getLanguage())
+    }
+    const onClickRu = () =>{
+        localStorage.setItem('language', JSON.stringify("ru"));
+        dispatch(languageOperations.getLanguage())
+    }
+    let mainLang;
+    const uk = {
+        link1: "Подарункові сертифікати",
+        link2: "Доставка та оплата",
+        link3: "Обмін та повернення",
+        link4: "Контакти",
+        mainli1: "Новинки",
+        mainli2: "Товари зі знижкою",
+        mainli3: "Промо-Акції",
+        mainli4: "Хіти продажу",
+    };
+    const ru = {
+        link1: "Подарочные сертификаты",
+        link2: "Доставка и оплата",
+        link3: "Обмен и возврат",
+        link4: "Контакты",
+        mainli1: "Новинки",
+        mainli2: "Товары со скидкой",
+        mainli3: "Промо-Акции",
+        mainli4: "Хиты продаж",
+    };
+    if(language === "uk"){
+        mainLang = uk;
+    }
+    if(language === "ru"){
+        mainLang = ru;
+    }
     return (
         <div>
             <div className="header_top">
                 <div className="wrapper header_top_content">
-                    <a className="header_top_content_p">Подарункові сертифікати</a>
-                    <Link className="header_top_content_p" to='/delivery_payment'>Доставка та оплата</Link>
-                    <Link className="header_top_content_p" to='/admin'>Обмін та повернення</Link>
-                    <a className="header_top_content_p">Контакти</a>
+                    <Link className="header_top_content_p">{mainLang.link1}</Link>
+                    <Link className="header_top_content_p" to='/delivery_payment'>{mainLang.link2}</Link>
+                    <Link className="header_top_content_p" to='/admin'>{mainLang.link3}</Link>
+                    <Link className="header_top_content_p">{mainLang.link4}</Link>
                 </div>
             </div>
             <div className="header_centre">
@@ -73,8 +116,18 @@ function Header() {
                         <p className="header_centre_tel">093-987-31-51</p>
                     </div>
                     <div className="header_centre_lang_block">
-                        <p className="header_centre_lang_block_p header_centre_lang_block_p_active">UA</p>
-                        <p className="header_centre_lang_block_p">RU</p>
+                        <p
+                            className="header_centre_lang_block_p header_centre_lang_block_p_active"
+                            onClick={onClickUk}
+                            >
+                            UA
+                        </p>
+                        <p
+                            className="header_centre_lang_block_p"
+                            onClick={onClickRu}
+                        >
+                            RU
+                        </p>
                     </div>
                     <div className="header_centre_icons">
                         <svg width="22" height="20" viewBox="0 0 22 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -104,19 +157,19 @@ function Header() {
                     <nav className="header_bottom_nav">
                         <div className="header_bottom_nav_link">
                             <img src={newIcon}/>
-                            <p className="header_bottom_nav_link_text">Новинки</p>
+                            <p className="header_bottom_nav_link_text">{mainLang.mainli1}</p>
                         </div>
                         <div className="header_bottom_nav_link">
                             <img src={saleIcon}/>
-                            <p className="header_bottom_nav_link_text">Товари зі знижкою</p>
+                            <p className="header_bottom_nav_link_text">{mainLang.mainli2}</p>
                         </div>
                         <div className="header_bottom_nav_link">
                             <img src={promoIcon}/>
-                            <p className="header_bottom_nav_link_text">Промо-Акції</p>
+                            <p className="header_bottom_nav_link_text">{mainLang.mainli3}</p>
                         </div>
                         <div className="header_bottom_nav_link">
                             <img src={bestIcon}/>
-                            <p className="header_bottom_nav_link_text">Хіти продажу</p>
+                            <p className="header_bottom_nav_link_text">{mainLang.mainli4}</p>
                         </div>
                     </nav>
                 </div>
@@ -124,5 +177,10 @@ function Header() {
         </div>
     );
 }
+const mapStateToProps = (state) => {
+    return {
+        language: state.language.data,
+    };
+};
 
-export default Header;
+export default connect(mapStateToProps) (Header);

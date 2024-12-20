@@ -17,6 +17,7 @@ import {customerOperations} from "../store/user";
 import ProtectedRoutes from "../utils/ProtectedRoutes";
 import RegistartionList from "../pages/RegistrationList/RegistartionList";
 import UserInfo from "../pages/UserInfo/UserInfo";
+import {languageOperations} from "../store/language";
 
 function AppRoutes({ dispatch, user, token }) {
     useEffect(() => {
@@ -25,10 +26,11 @@ function AppRoutes({ dispatch, user, token }) {
             axios.defaults.headers.common.Authorization = tokenAuth;
             dispatch(customerOperations.getCustomer())
         }
-        // else {
-        //     axios.defaults.headers.common.Authorization = null;
-        // }
+        else {
+            axios.defaults.headers.common.Authorization = null;
+        }
         dispatch(tokenOperations.getToken());
+        dispatch(languageOperations.getLanguage())
         }, [dispatch]);
         const isAuth = !!user.name;
     return (
@@ -57,6 +59,8 @@ const mapStateToProps = (state) => {
     return {
         token: state.token.data,
         user: state.user.data,
+        language: state.language.data,
+
     };
 };
 
