@@ -18,6 +18,7 @@ import ProtectedRoutes from "../utils/ProtectedRoutes";
 import RegistartionList from "../pages/RegistrationList/RegistartionList";
 import UserInfo from "../pages/UserInfo/UserInfo";
 import {languageOperations} from "../store/language";
+import DeliveryPage from "../pages/Delivery/DeliveryPage";
 
 function AppRoutes({ dispatch, user, token }) {
     useEffect(() => {
@@ -41,6 +42,7 @@ function AppRoutes({ dispatch, user, token }) {
                 <Route path="/login" element={isAuth ? <Navigate to="/userInfo"/> : <Login />} />
                 <Route path="/registration" element={isAuth ? <Navigate to="/userInfo"/> : <RegistartionList />} />
                 <Route path="/userinfo" element={<UserInfo />} />
+                <Route path="/delivery" element={<DeliveryPage />}/>
                 <Route path='/admin' element={
                     <ProtectedRoutes user={user}>
                         <AdminTool />

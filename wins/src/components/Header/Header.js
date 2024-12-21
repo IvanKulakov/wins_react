@@ -11,12 +11,32 @@ import {connect} from "react-redux";
 
 
 function Header({ dispatch, language }) {
-    useEffect(()=>{
-        if (!JSON.parse(localStorage.getItem('language'))) {
-            localStorage.setItem('language', JSON.stringify(`uk`));
-        }
-        dispatch(languageOperations.getLanguage())
-    }, [dispatch])
+    const uk = {
+        link1: "Подарункові сертифікати",
+        link2: "Доставка",
+        link3: "Оплата",
+        link4: "Обмін та повернення",
+        link5: "Контакти",
+        mainli1: "Новинки",
+        mainli2: "Товари зі знижкою",
+        mainli3: "Промо-Акції",
+        mainli4: "Хіти продажу",
+        catalog: "Каталог товарiв",
+    };
+    const ru = {
+        link1: "Подарочные сертификаты",
+        link2: "Доставка",
+        link3: "Оплата",
+        link4: "Обмен и возврат",
+        link5: "Контакты",
+        mainli1: "Новинки",
+        mainli2: "Товары со скидкой",
+        mainli3: "Промо-Акции",
+        mainli4: "Хиты продаж",
+        catalog: "Каталог товаров",
+
+    };
+    let mainLang = uk;
     const onClickUk = () =>{
         localStorage.setItem('language', JSON.stringify("uk"));
         dispatch(languageOperations.getLanguage())
@@ -25,27 +45,11 @@ function Header({ dispatch, language }) {
         localStorage.setItem('language', JSON.stringify("ru"));
         dispatch(languageOperations.getLanguage())
     }
-    let mainLang;
-    const uk = {
-        link1: "Подарункові сертифікати",
-        link2: "Доставка та оплата",
-        link3: "Обмін та повернення",
-        link4: "Контакти",
-        mainli1: "Новинки",
-        mainli2: "Товари зі знижкою",
-        mainli3: "Промо-Акції",
-        mainli4: "Хіти продажу",
-    };
-    const ru = {
-        link1: "Подарочные сертификаты",
-        link2: "Доставка и оплата",
-        link3: "Обмен и возврат",
-        link4: "Контакты",
-        mainli1: "Новинки",
-        mainli2: "Товары со скидкой",
-        mainli3: "Промо-Акции",
-        mainli4: "Хиты продаж",
-    };
+
+    useEffect(()=>{
+        dispatch(languageOperations.getLanguage())
+    }, [dispatch])
+
     if(language === "uk"){
         mainLang = uk;
     }
@@ -57,9 +61,10 @@ function Header({ dispatch, language }) {
             <div className="header_top">
                 <div className="wrapper header_top_content">
                     <Link className="header_top_content_p">{mainLang.link1}</Link>
-                    <Link className="header_top_content_p" to='/delivery_payment'>{mainLang.link2}</Link>
-                    <Link className="header_top_content_p" to='/admin'>{mainLang.link3}</Link>
-                    <Link className="header_top_content_p">{mainLang.link4}</Link>
+                    <Link className="header_top_content_p" to='/delivery'>{mainLang.link2}</Link>
+                    <Link className="header_top_content_p" to='/delivery_payment'>{mainLang.link3}</Link>
+                    <Link className="header_top_content_p" to='/'>{mainLang.link4}</Link>
+                    <Link className="header_top_content_p">{mainLang.link5}</Link>
                 </div>
             </div>
             <div className="header_centre">
@@ -78,7 +83,7 @@ function Header({ dispatch, language }) {
                                 d="M0.929688 8.57031V0.929688H8.57031V8.57031H0.929688ZM2.75781 6.74219H6.74219V2.75781H2.75781V6.74219ZM0.929688 19.0703V11.4297H8.57031V19.0703H0.929688ZM2.75781 17.2422H6.74219V13.2578H2.75781V17.2422ZM11.4297 8.57031V0.929688H19.0703V8.57031H11.4297ZM13.2578 6.74219H17.2422V2.75781H13.2578V6.74219ZM11.4297 19.0703V11.4297H19.0703V19.0703H11.4297ZM13.2578 17.2422H17.2422V13.2578H13.2578V17.2422Z"
                                 fill="white"/>
                         </svg>
-                        <p className="header_centre_btn_cat_p">Каталог товарiв</p>
+                        <p className="header_centre_btn_cat_p">{mainLang.catalog}</p>
                         <svg width="9" height="6" viewBox="0 0 9 6" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path
                                 d="M7.29248 0.53125L4.22998 3.57812L1.16748 0.53125L0.22998 1.46875L4.22998 5.46875L8.22998 1.46875L7.29248 0.53125Z"
