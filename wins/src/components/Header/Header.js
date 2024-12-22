@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import './Header.scss'
 import logo from '../../assets/logo.png'
 import newIcon from '../../assets/Haeder/new.png'
@@ -8,6 +8,7 @@ import bestIcon from '../../assets/Haeder/best.png'
 import { Link } from "react-router";
 import {languageOperations} from "../../store/language";
 import {connect} from "react-redux";
+import Langswitch from "../Langswitch/Langswitch";
 
 
 function Header({ dispatch, language }) {
@@ -60,7 +61,7 @@ function Header({ dispatch, language }) {
         <div>
             <div className="header_top">
                 <div className="wrapper header_top_content">
-                    <Link className="header_top_content_p">{mainLang.link1}</Link>
+                    <Link className="header_top_content_p" to='/certificate'>{mainLang.link1}</Link>
                     <Link className="header_top_content_p" to='/delivery'>{mainLang.link2}</Link>
                     <Link className="header_top_content_p" to='/payment'>{mainLang.link3}</Link>
                     <Link className="header_top_content_p" to='/exchange'>{mainLang.link4}</Link>
@@ -120,20 +121,8 @@ function Header({ dispatch, language }) {
                         </svg>
                         <p className="header_centre_tel">093-987-31-51</p>
                     </div>
-                    <div className="header_centre_lang_block">
-                        <p
-                            className="header_centre_lang_block_p header_centre_lang_block_p_active"
-                            onClick={onClickUk}
-                            >
-                            UA
-                        </p>
-                        <p
-                            className="header_centre_lang_block_p"
-                            onClick={onClickRu}
-                        >
-                            RU
-                        </p>
-                    </div>
+
+                    <Langswitch />
                     <div className="header_centre_icons">
                         <svg width="22" height="20" viewBox="0 0 22 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path

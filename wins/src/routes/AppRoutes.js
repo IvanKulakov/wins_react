@@ -3,7 +3,7 @@ import {
     BrowserRouter as Router,
     Routes,
     Route,
-    Navigate, Redirect, Switch
+    Navigate
 } from 'react-router-dom';
 import Main from "../pages/Main/Main";
 import DeliveryPayment from "../pages/Delivery&payment/DeliveryPayment";
@@ -22,6 +22,7 @@ import DeliveryPage from "../pages/Delivery/DeliveryPage";
 import PaymentPage from "../pages/Payment/PaymentPage";
 import ExchangePage from "../pages/ Exchange/ExchangePage";
 import ContactsPage from "../pages/Contacts/ContactsPage";
+import CertificatePage from "../pages/Сertificate/CertificatePage";
 
 function AppRoutes({ dispatch, user, token }) {
     useEffect(() => {
@@ -45,6 +46,7 @@ function AppRoutes({ dispatch, user, token }) {
                 <Route path="/login" element={isAuth ? <Navigate to="/userInfo"/> : <Login />} />
                 <Route path="/registration" element={isAuth ? <Navigate to="/userInfo"/> : <RegistartionList />} />
                 <Route path="/userinfo" element={<UserInfo />} />
+                <Route path="/certificate" element={<CertificatePage />}/>
                 <Route path="/delivery" element={<DeliveryPage />}/>
                 <Route path="/payment" element={<PaymentPage />}/>
                 <Route path="/exchange" element={<ExchangePage />}/>

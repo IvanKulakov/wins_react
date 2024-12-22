@@ -1,12 +1,14 @@
 import React from "react";
-import Contacts from "./Contacts";
+import ContactsMap from "./ContactsMap";
 import Header from "../../components/Header/Header";
+import ContactsInput from "./ContactsInput";
 
 function ContactsPage(){
     return(
         <div>
             <Header />
-            <Contacts />
+            <ContactsMap />
+            <ContactsInput />
         </div>
     )
 }
