@@ -1,29 +1,27 @@
-.delivery_block{
+.payment_block{
   padding: 45px 0;
 }
-.delivery_title_block{
+.payment_title_block{
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+
   h1{
     font-family: Helvetica;
     font-size: 30px;
     font-weight: 500;
     color: #1E1E1E;
-
   }
   div{
     height: 2px;
     width: 100%;
     background: #05172F;
     margin-left: 10px;
-    color: #1E1E1E;
-
   }
 
 }
-.delivery_content_block{
+.payment_content_block{
   h2{
     text-align: center;
     font-family: Helvetica;
@@ -31,7 +29,6 @@
     font-weight: 500;
     margin: 35px 0;
     color: #1E1E1E;
-
   }
   p{
     font-family: Helvetica;
@@ -39,10 +36,9 @@
     font-weight: 400;
     line-height: 20px;
     color: #1E1E1E;
-
   }
 }
-.delivery_content_main_block{
+.payment_content_main_block{
   h3{
     font-family: Helvetica;
     font-size: 20px;
@@ -50,7 +46,6 @@
     text-align: left;
     margin: 14px 0;
     color: #1E1E1E;
-
   }
   p{
     font-family: Helvetica;
@@ -58,7 +53,6 @@
     font-weight: 400;
     line-height: 20px;
     color: #1E1E1E;
-
   }
   div{
     padding-top: 14px;

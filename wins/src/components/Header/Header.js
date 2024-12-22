@@ -62,9 +62,9 @@ function Header({ dispatch, language }) {
                 <div className="wrapper header_top_content">
                     <Link className="header_top_content_p">{mainLang.link1}</Link>
                     <Link className="header_top_content_p" to='/delivery'>{mainLang.link2}</Link>
-                    <Link className="header_top_content_p" to='/delivery_payment'>{mainLang.link3}</Link>
-                    <Link className="header_top_content_p" to='/'>{mainLang.link4}</Link>
-                    <Link className="header_top_content_p">{mainLang.link5}</Link>
+                    <Link className="header_top_content_p" to='/payment'>{mainLang.link3}</Link>
+                    <Link className="header_top_content_p" to='/exchange'>{mainLang.link4}</Link>
+                    <Link className="header_top_content_p" to='/contacts'>{mainLang.link5}</Link>
                 </div>
             </div>
             <div className="header_centre">
