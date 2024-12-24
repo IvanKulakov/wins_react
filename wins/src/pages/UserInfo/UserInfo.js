@@ -20,7 +20,7 @@ function UserInfo({ dispatch, token, user }) {
         }, [dispatch]);
     const {role} = user;
     return (
-        <div>
+        <div className="wrapper">
             <Header />
            <p>userInfo</p>
             <div>

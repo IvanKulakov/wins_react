@@ -1,13 +1,39 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { Formik } from 'formik';
 import {useNavigate} from 'react-router';
 import * as yup from 'yup';
-import './Form.scss';
+import './Login.scss';
 import {customerOperations} from "../../store/user";
 import {connect} from "react-redux";
 import {tokenOperations} from "../../store/token";
+import {languageOperations} from "../../store/language";
 
-const Login = ({ dispatch }) => {
+const Login = ({ dispatch, language }) => {
+    const uk ={
+        title: "Увійти",
+        email: "Електронна пошта",
+        password: "Введіть пароль",
+        btn: "Увійти",
+
+    }
+    const ru = {
+        title: "Войти",
+        email: "Электронная почта",
+        password: "Введите пароль",
+        btn: "Войти",
+    }
+    let mainLang = uk;
+
+    useEffect(()=>{
+        dispatch(languageOperations.getLanguage())
+    }, [dispatch])
+
+    if(language === "uk"){
+        mainLang = uk;
+    }
+    if(language === "ru"){
+        mainLang = ru;
+    }
     const hist = useNavigate();
     const setLogin = (data) =>{
     dispatch(customerOperations.setLoginCustomer(JSON.stringify(data)));
@@ -24,7 +50,7 @@ const Login = ({ dispatch }) => {
         email: yup.string().email('Введите корректный email').required('Поле обязательно для ввода'),
     });
     return (
-        <div className="form__wrapper wrapper">
+        <div>
             <Formik
                 initialValues={{
                     email: '',
@@ -37,55 +63,40 @@ const Login = ({ dispatch }) => {
                 validationSchema={validationSchema}
             >
                 {({ values, errors, touched, handleChange, handleBlur, isValid, handleSubmit, dirty }) => (
-                    <div className="form__container">
-                        <p className="title">Вхід в обліковий запис</p>
-                        <div style={{ position: 'relative' }}>
-                            <p className="input-from__wrapper input-from__wrapper--reg">
-                                <label htmlFor="email" title="email">
-                                    Почта
+                    <div className="login_container">
+                        <h3>{mainLang.title}</h3>
+                        <div className="input_box">
                                     <input
-                                        className="input-form input-form--reg"
-                                        placeholder="Введите Ваш email"
+                                        className=""
+                                        placeholder={mainLang.email}
                                         type="email"
                                         name="email"
                                         onChange={handleChange}
                                         onBlur={handleBlur}
                                         value={values.email}
                                     />
-                                </label>
-                            </p>
-                            {touched.email && errors.email && (
-                                <p className="error__message error__message--reg">{errors.email}</p>
-                            )}
+
                         </div>
-                        <div style={{ position: 'relative' }}>
-                            <p className="input-from__wrapper input-from__wrapper--reg">
-                                <label htmlFor="password" title="password">
-                                    Пароль
+                        <div className="input_box">
                                     <input
-                                        className="input-form input-form--reg"
-                                        placeholder="Введите пароль"
+                                        className=""
+                                        placeholder={mainLang.password}
                                         type="password"
                                         name="password"
                                         onChange={handleChange}
                                         onBlur={handleBlur}
                                         value={values.password}
                                     />
-                                </label>
-                            </p>
-                            {touched.password && errors.password && (
-                                <p className="error__message error__message--reg">{errors.password}</p>
-                            )}
                         </div>
 
                         <button
                             disabled={!isValid && !dirty}
                             onClick={handleSubmit}
                             type="submit"
-                            className="button-submit ant-btn"
+                            className=""
                             data-testid="button-submit"
                         >
-                            Отправить
+                            {mainLang.btn}
                         </button>
                     </div>
                 )}
@@ -97,6 +108,7 @@ const mapStateToProps = (state) => {
     return {
         token: state.token.data,
         user: state.user.data,
+        language: state.language.data,
     };
 };
 export default connect(mapStateToProps) (Login);

@@ -1,0 +1,55 @@
+.loginlist_block{
+  margin-top: 55px;
+  margin-bottom: 55px;
+  h1{
+    font-family: Alegreya Sans;
+    font-size: 40px;
+    font-weight: 500;
+    line-height: 21px;
+    text-align: center;
+    color: #000000;
+
+  }
+}
+.loginlist_pos{
+  margin-top: 55px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.loginlist_content{
+  margin-left: 80px;
+  text-align: center;
+  h2{
+    font-family: Alegreya Sans;
+    font-size: 38px;
+    font-weight: 500;
+    line-height: 21px;
+    text-align: center;
+    margin-bottom: 22px;
+    color: #000000;
+  }
+  p{
+    font-family: Alegreya Sans;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 21px;
+    text-align: center;
+    color: #000000;
+    margin-bottom: 30px;
+  }
+}
+.loginlist_btn{
+  font-family: Alegreya Sans;
+  background: #3960FF;
+  padding: 10px 26px;
+  border-radius: 9999px;
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 21px;
+  color: #FFFFFF;
+}
+.loginlist_btn:hover{
+
+}

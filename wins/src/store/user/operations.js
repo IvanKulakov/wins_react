@@ -1,6 +1,7 @@
 import axios from 'axios';
 import actions from './actions';
 import actionsToken from '../token/actions';
+import {message} from "antd";
 
 const setCustomer = (userData) => (dispatch) => {
   axios.post(`/api/user/login`, userData).then((res) => {
@@ -18,11 +19,13 @@ const setLoginCustomer = (userData) => (dispatch) => {
     .then((response) => {
       dispatch(actionsToken.setToken(response.data.token));
       dispatch(actions.setCustomerData(response.data.userData));
-
       localStorage.setItem('token', JSON.stringify(response.data.token));
+      message.success('Добро пожаловать!', 2);
+
     })
     .catch((error) => {
       console.log(error);
+      message.error('Что-то пошло не так!', 2);
     });
   dispatch(actions.setCustomerLoading(false));
 };
