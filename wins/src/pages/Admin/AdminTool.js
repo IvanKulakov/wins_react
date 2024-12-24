@@ -4,7 +4,7 @@ import AddProduct from "../../components/AdminTools/AddProduct";
 import AddType from "../../components/AdminTools/AddType";
 import AddBrand from "../../components/AdminTools/AddBrand";
 
-function AdminTool(props) {
+function AdminTool() {
     return (
         <div className="wrapper">
             <Header />

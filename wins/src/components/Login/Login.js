@@ -38,26 +38,7 @@ const Login = ({ dispatch }) => {
             >
                 {({ values, errors, touched, handleChange, handleBlur, isValid, handleSubmit, dirty }) => (
                     <div className="form__container">
-                        <p className="title">Login</p>
-                        <div style={{ position: 'relative' }}>
-                            <p className="input-from__wrapper input-from__wrapper--reg">
-                                <label htmlFor="password" title="password">
-                                    Пароль
-                                    <input
-                                        className="input-form input-form--reg"
-                                        placeholder="Введите пароль"
-                                        type="text"
-                                        name="password"
-                                        onChange={handleChange}
-                                        onBlur={handleBlur}
-                                        value={values.password}
-                                    />
-                                </label>
-                            </p>
-                            {touched.password && errors.password && (
-                                <p className="error__message error__message--reg">{errors.password}</p>
-                            )}
-                        </div>
+                        <p className="title">Вхід в обліковий запис</p>
                         <div style={{ position: 'relative' }}>
                             <p className="input-from__wrapper input-from__wrapper--reg">
                                 <label htmlFor="email" title="email">
@@ -77,6 +58,26 @@ const Login = ({ dispatch }) => {
                                 <p className="error__message error__message--reg">{errors.email}</p>
                             )}
                         </div>
+                        <div style={{ position: 'relative' }}>
+                            <p className="input-from__wrapper input-from__wrapper--reg">
+                                <label htmlFor="password" title="password">
+                                    Пароль
+                                    <input
+                                        className="input-form input-form--reg"
+                                        placeholder="Введите пароль"
+                                        type="password"
+                                        name="password"
+                                        onChange={handleChange}
+                                        onBlur={handleBlur}
+                                        value={values.password}
+                                    />
+                                </label>
+                            </p>
+                            {touched.password && errors.password && (
+                                <p className="error__message error__message--reg">{errors.password}</p>
+                            )}
+                        </div>
+
                         <button
                             disabled={!isValid && !dirty}
                             onClick={handleSubmit}

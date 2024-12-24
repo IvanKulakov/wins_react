@@ -1,6 +1,5 @@
-import React, {useEffect, useMemo, useState} from 'react';
-import {Button, Input, Select, Upload} from 'antd';
-import { UploadOutlined } from '@ant-design/icons';
+import React, {useEffect, useState} from 'react';
+import {Button, Input, Select } from 'antd';
 import { connect } from 'react-redux';
 import BrandsSelect from "./BrandsSelect";
 import {itemsOperations} from "../../store/items";

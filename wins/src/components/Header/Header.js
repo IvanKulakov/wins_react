@@ -9,9 +9,11 @@ import { Link } from "react-router";
 import {languageOperations} from "../../store/language";
 import {connect} from "react-redux";
 import Langswitch from "../Langswitch/Langswitch";
+import {useLocation} from "react-router-dom";
 
 
 function Header({ dispatch, language }) {
+    const location = useLocation();
     const uk = {
         link1: "Подарункові сертифікати",
         link2: "Доставка",
@@ -38,14 +40,6 @@ function Header({ dispatch, language }) {
 
     };
     let mainLang = uk;
-    const onClickUk = () =>{
-        localStorage.setItem('language', JSON.stringify("uk"));
-        dispatch(languageOperations.getLanguage())
-    }
-    const onClickRu = () =>{
-        localStorage.setItem('language', JSON.stringify("ru"));
-        dispatch(languageOperations.getLanguage())
-    }
 
     useEffect(()=>{
         dispatch(languageOperations.getLanguage())
@@ -61,11 +55,35 @@ function Header({ dispatch, language }) {
         <div>
             <div className="header_top">
                 <div className="wrapper header_top_content">
-                    <Link className="header_top_content_p" to='/certificate'>{mainLang.link1}</Link>
-                    <Link className="header_top_content_p" to='/delivery'>{mainLang.link2}</Link>
-                    <Link className="header_top_content_p" to='/payment'>{mainLang.link3}</Link>
-                    <Link className="header_top_content_p" to='/exchange'>{mainLang.link4}</Link>
-                    <Link className="header_top_content_p" to='/contacts'>{mainLang.link5}</Link>
+                    <Link
+                        className={location.pathname === '/certificate' ? "header_top_content_p_action" : "header_top_content_p"}
+                        to='/certificate'
+                    >
+                        {mainLang.link1}</Link>
+                    <Link
+                        className={location.pathname === '/delivery' ? "header_top_content_p_action" : "header_top_content_p"}
+                        to='/delivery'
+                    >
+                        {mainLang.link2}
+                    </Link>
+                    <Link
+                        className={location.pathname === '/payment' ? "header_top_content_p_action" : "header_top_content_p"}
+                        to='/payment'
+                    >
+                        {mainLang.link3}
+                    </Link>
+                    <Link
+                        className={location.pathname === '/exchange' ? "header_top_content_p_action" : "header_top_content_p"}
+                        to='/exchange'
+                    >
+                        {mainLang.link4}
+                    </Link>
+                    <Link
+                        className={location.pathname === '/contacts' ? "header_top_content_p_action" : "header_top_content_p"}
+                        to='/contacts'
+                    >
+                        {mainLang.link5}
+                    </Link>
                 </div>
             </div>
             <div className="header_centre">
@@ -123,6 +141,7 @@ function Header({ dispatch, language }) {
                     </div>
 
                     <Langswitch />
+
                     <div className="header_centre_icons">
                         <svg width="22" height="20" viewBox="0 0 22 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path
