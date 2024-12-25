@@ -9,8 +9,6 @@ function RegistrationList() {
             <Header />
 
             <Registration />
-            <p> or </p>
-            <Link to="/login"> Login </Link>
         </div>
     );
 }

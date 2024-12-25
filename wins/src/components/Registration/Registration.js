@@ -3,21 +3,16 @@ import axios from 'axios';
 import { Formik } from 'formik';
 import {useNavigate} from 'react-router';
 import * as yup from 'yup';
-import {NumericFormat} from 'react-number-format';
+import { PatternFormat  } from 'react-number-format';
 import './Form.scss';
+import {message} from "antd";
 
 const Registration = () => {
   const hist = useNavigate();
   const validationSchema = yup.object().shape({
     name: yup.string().typeError('Вводите строкой').required('Поле обязательно для ввода'),
-    // lastName: yup.string().typeError('Вводите строкой').required('Поле обязательно для ввода'),
-    // login: yup
-    //   .string()
-    //   .min(4, 'LoginList should be 4 chars minimum.')
-    //   .max(8, 'LoginList should be 8 chars maximum.')
-    //   .matches(/[a-zA-Z]/, 'LoginList can only contain Latin letters.')
-    //   .typeError('Вводите строкой')
-    //   .required('Поле обязательно для ввода'),
+    lastName: yup.string().typeError('Вводите строкой').required('Поле обязательно для ввода'),
+
     password: yup
       .string()
       .min(8, 'Password is too short - should be 8 chars minimum.')
@@ -39,7 +34,7 @@ const Registration = () => {
 
           console.log(response);
             // hist.push('/api/user/auth');
-        // message.success('Спасибо за регистрацию!', 2);
+        message.success('Спасибо за регистрацию!', 2);
       })
       .catch((error) => {
         // message.error(`${error.response.data.message}`, 2);
@@ -50,7 +45,8 @@ const Registration = () => {
       <Formik
         initialValues={{
           name: '',
-          // telephone: '',
+          lastName: '',
+          telephone: '',
           email: '',
           password: '',
         }}
@@ -83,6 +79,67 @@ const Registration = () => {
               )}
             </div>
             <div style={{ position: 'relative' }}>
+                  <p className="input-from__wrapper input-from__wrapper--reg">
+                      <label htmlFor="name" title="name">
+                          Фамилия
+                          <input
+                              className="input-form input-form--reg"
+                              placeholder="Введите Ваше имя"
+                              type="text"
+                              name="name"
+                              onChange={handleChange}
+                              onBlur={handleBlur}
+                              value={values.lastName}
+                          />
+                      </label>
+                  </p>
+                  {touched.lastName && errors.lastName && (
+                      <p className="error__message error__message--reg">{errors.lastName}</p>
+                  )}
+              </div>
+            <div style={{ position: 'relative' }}>
+                  <p className="input-from__wrapper input-from__wrapper--reg">
+                      <>{/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}</>
+                      <label htmlFor="telephone" title="telephone">
+                          Телефон
+                          <PatternFormat
+                              format={"+38 (###) ### ## ##"}
+                              prefix={`+38`}
+                              mask="_"
+                              className="input-form input-form--reg"
+                              placeholder="Input phone"
+                              type="telephone"
+                              name="telephone"
+                              onChange={handleChange}
+                              onBlur={handleBlur}
+                              value={values.telephone}
+                          />
+                      </label>
+                  </p>
+                  {touched.telephone && errors.telephone && (
+                      <p className="error__message error__message--reg">{errors.telephone}</p>
+                  )}
+              </div>
+            <div style={{ position: 'relative' }}>
+                  <p className="input-from__wrapper input-from__wrapper--reg">
+                      <label htmlFor="email" title="email">
+                          Почта
+                          <input
+                              className="input-form input-form--reg"
+                              placeholder="Введите Ваш email"
+                              type="email"
+                              name="email"
+                              onChange={handleChange}
+                              onBlur={handleBlur}
+                              value={values.email}
+                          />
+                      </label>
+                  </p>
+                  {touched.email && errors.email && (
+                      <p className="error__message error__message--reg">{errors.email}</p>
+                  )}
+              </div>
+            <div style={{ position: 'relative' }}>
               <p className="input-from__wrapper input-from__wrapper--reg">
                 <label htmlFor="password" title="password">
                   Пароль
@@ -102,47 +159,26 @@ const Registration = () => {
               )}
             </div>
             <div style={{ position: 'relative' }}>
-              <p className="input-from__wrapper input-from__wrapper--reg">
-                <label htmlFor="email" title="email">
-                  Почта
-                  <input
-                    className="input-form input-form--reg"
-                    placeholder="Введите Ваш email"
-                    type="email"
-                    name="email"
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    value={values.email}
-                  />
-                </label>
-              </p>
-              {touched.email && errors.email && (
-                <p className="error__message error__message--reg">{errors.email}</p>
-              )}
-            </div>
-            {/*<div style={{ position: 'relative' }}>*/}
-            {/*  <p className="input-from__wrapper input-from__wrapper--reg">*/}
-            {/*    <>/!* eslint-disable-next-line jsx-a11y/label-has-associated-control *!/</>*/}
-            {/*    <label htmlFor="telephone" title="telephone">*/}
-            {/*      Телефон*/}
-            {/*      <NumericFormat*/}
-            {/*        format="+38##########"*/}
-            {/*        mask="_"*/}
-            {/*        className="input-form input-form--reg"*/}
-            {/*        placeholder="Введите Ваш номер телефона"*/}
-            {/*        type="telephone"*/}
-            {/*        name="telephone"*/}
-            {/*        onChange={handleChange}*/}
-            {/*        onBlur={handleBlur}*/}
-            {/*        value={values.telephone}*/}
-            {/*      />*/}
-            {/*    </label>*/}
-            {/*  </p>*/}
-            {/*  {touched.telephone && errors.telephone && (*/}
-            {/*    <p className="error__message error__message--reg">{errors.telephone}</p>*/}
-            {/*  )}*/}
-            {/*</div>*/}
-            <button
+                  <p className="input-from__wrapper input-from__wrapper--reg">
+                      <label htmlFor="password" title="password">
+                          Пароль
+                          <input
+                              className="input-form input-form--reg"
+                              placeholder="Введите пароль"
+                              type="text"
+                              name="password"
+                              onChange={handleChange}
+                              onBlur={handleBlur}
+                              value={values.password}
+                          />
+                      </label>
+                  </p>
+                  {touched.password && errors.password && (
+                      <p className="error__message error__message--reg">{errors.password}</p>
+                  )}
+              </div>
+
+              <button
               disabled={!isValid && !dirty}
               onClick={handleSubmit}
               type="submit"
