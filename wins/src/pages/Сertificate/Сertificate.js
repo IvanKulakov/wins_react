@@ -111,7 +111,7 @@ function Certificate({ dispatch, language }) {
                                         value={values.nameto}
                                     />
                             {touched.nameto && errors.nameto && (
-                                <p className="error__message error__message--reg">{errors.nameto}</p>
+                                <p className="error__message__certificate error__message__certificate--reg">{errors.nameto}</p>
                             )}
                         </div>
                         <div className="certificate">
@@ -126,7 +126,7 @@ function Certificate({ dispatch, language }) {
                                         value={values.namefrome}
                                     />
                             {touched.namefrome && errors.namefrome && (
-                                <p className="error__message error__message--reg">{errors.namefrome}</p>
+                                <p className="error__message__certificate error__message__certificate--reg">{errors.namefrome}</p>
                             )}
                         </div>
                         <div className="certificate_coast">
@@ -145,7 +145,7 @@ function Certificate({ dispatch, language }) {
                             </div>
                             <p className="certificate_coast_p">{mainLang.sumcoast}</p>
                             {touched.coast && errors.coast && (
-                                <p className="error__message error__message--reg">{errors.coast}</p>
+                                <p className="error__message__certificate error__message__certificate--reg">{errors.coast}</p>
                             )}
                         </div>
                         <div className="certificate_message">
@@ -160,7 +160,7 @@ function Certificate({ dispatch, language }) {
                                         value={values.message}
                                     />
                             {touched.message && errors.message && (
-                                <p className="error__message error__message--reg">{errors.message}</p>
+                                <p className="error__message__certificate error__message__certificate--reg">{errors.message}</p>
                             )}
                         </div>
                         <div className="certificate_radio_input">
@@ -201,7 +201,7 @@ function Certificate({ dispatch, language }) {
                                         value={values.email}
                                     />
                             {touched.email && errors.email && (
-                                <p className="error__message error__message--reg">{errors.email}</p>
+                                <p className="error__message__certificate error__message__certificate--reg">{errors.email}</p>
                             )}
                         </div>
                         {contextHolder}

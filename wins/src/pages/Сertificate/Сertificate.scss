@@ -153,3 +153,12 @@
     padding: 0 28px;
   }
 }
+.error__message__certificate {
+  position: absolute;
+  margin-bottom: 0;
+  color: red;
+  font-size: 14px;
+}
+.error__message__certificate--reg{
+  bottom: -16px;
+}
