@@ -1,16 +1,17 @@
 import React, {useEffect, useState} from 'react';
-import {Button, Input, Select } from 'antd';
+import {Button, Input, Select, Upload} from 'antd';
 import { connect } from 'react-redux';
-import BrandsSelect from "./BrandsSelect";
-import {itemsOperations} from "../../store/items";
-import {brandsOperations} from "../../store/brands";
-import TypeSelect from "./TypeSelect";
-import {typeOperations} from "../../store/type";
+import BrandsSelect from "../BrandsAdmin/BrandsSelect";
+import {itemsOperations} from "../../../store/items";
+import {brandsOperations} from "../../../store/brands";
+import TypeSelect from "../TypesAdmin/TypeSelect";
+import {typeOperations} from "../../../store/type";
 
 const AddProduct = ({ brands, type, dispatch }) => {
     useEffect(() => {
         dispatch(typeOperations.getType())
         dispatch(brandsOperations.getBrands())
+        dispatch(itemsOperations.getItems())
     }, [dispatch]);
   const [imgURL1, setImgURL1] = useState(null);
   const [brand, setBrand] = useState(1);
@@ -48,7 +49,6 @@ const AddProduct = ({ brands, type, dispatch }) => {
       stars: stars,
       options: options,
     };
-    console.log(newProduct)
     dispatch(itemsOperations.newItem(newProduct));
   };
 
@@ -56,20 +56,13 @@ const AddProduct = ({ brands, type, dispatch }) => {
     <div>
       <p>Добавление продукта</p>
 
-        {/*<Upload*/}
-        {/*    action="https://660d2bd96ddfa2943b33731c.mockapi.io/api/upload"*/}
-        {/*    listType="picture"*/}
-        {/*    maxCount={1}*/}
-        {/*    data={imgURL1}*/}
-        {/*    onChange={handleChangeImg}*/}
-        {/*>*/}
-        {/*    <Button icon={<UploadOutlined />}>Upload (Max: 1)</Button>*/}
-        {/*</Upload>*/}
         <input
             placeholder="img"
             type="file"
             onChange={handleChangeImg}/>
+        <p>name</p>
         <Input placeholder="name" value={name} onInput={(e) => setName(e.target.value)} />
+        <p>price</p>
           <Input
             placeholder="price"
             value={price}
@@ -81,12 +74,26 @@ const AddProduct = ({ brands, type, dispatch }) => {
         <Select defaultValue="types" style={{ width: 300 }} onChange={handleChangeTypes}>
             {alltypes}
         </Select>
+        <p>quantity</p>
       <Input placeholder="quantity" value={quantity} onInput={(e) => setQuantity(e.target.value)} />
       <Input
-        placeholder="myCustomParam"
+        placeholder="about"
         value={myCustomParam}
         onInput={(e) => setMyCustomParam(e.target.value)}
       />
+        <p>starts</p>
+        <Input
+            placeholder="stars"
+            value={stars}
+            onInput={(e) => setStars(e.target.value)}
+        />
+        <p>options</p>
+        <Input
+            placeholder="options"
+            value={options}
+            onInput={(e) => setOptions(e.target.value)}
+        />
+
       <Button onClick={() => addProductFunc()}>Добавить</Button>
     </div>
   );

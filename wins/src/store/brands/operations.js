@@ -9,17 +9,34 @@ const getBrands = () => (dispatch) => {
   });
 };
 const newBrands = (data) => (dispatch) => {
-  axios.post('/api/brand', data).then((res) => {
+  axios({
+    method: "post",
+    url: "/api/brand/",
+    data: data,
+    headers: {"Content-Type": "multipart/form-data"},
+  }).then((res) => {
+    if (res.status === 200) {
     message.success(`${res.status}`, 2);
-
-    dispatch(actions.setBrandsData(res.data));
+    message.success('Бренд добавлен!', 2)
+  }
+  })
+      .catch((error) => {
+        console.log(error);
+        message.error(`${error.response.data.message}`, 2);
+      });
     dispatch(actions.setBrandsLoading(false));
-  });
 };
+
+const deleteBrand = (dataId) => (dispatch) => {
+  axios.delete(`/api/brand/${dataId}`).then(res => {
+    message.success(`${res.status}`, 2)
+  })
+}
 
 
 
 export default {
   getBrands,
   newBrands,
+  deleteBrand,
 };

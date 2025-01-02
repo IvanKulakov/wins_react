@@ -3,7 +3,9 @@ const { DataTypes } = require('sequelize')
 
 const User = sequelize.define('user', {
     id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
-    name: {type: DataTypes.STRING},
+    name: {type: DataTypes.STRING, defaultValue: "USER"},
+    lastname: {type: DataTypes.STRING, defaultValue: "USER"},
+    phone: {type: DataTypes.STRING, unique: true},
     email: {type: DataTypes.STRING, unique: true, allowNull: false},
     password: {type: DataTypes.STRING},
     role: {type: DataTypes.STRING, defaultValue: "USER"},
@@ -18,7 +20,7 @@ const Product = sequelize.define('products', {
     id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
     name: {type: DataTypes.STRING, unique: true, allowNull: false},
     price: {type: DataTypes.INTEGER, allowNull: false},
-    about: {type: DataTypes.STRING, allowNull: false},
+    about: {type: DataTypes.TEXT, allowNull: false},
     quantity: {type: DataTypes.INTEGER, allowNull: false},
     option: {type: DataTypes.STRING, allowNull: false, defaultValue: "new"},
     stars: {type: DataTypes.INTEGER, defaultValue: 0},

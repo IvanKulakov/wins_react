@@ -8,7 +8,7 @@ router.post('/', checkRole('ADMIN'), productsController.create)
 router.get('/', productsController.getAll)
 router.get('/:id', productsController.getOne)
 
-router.delete('/',)
+router.delete('/', checkRole('ADMIN') )
 
 
 module.exports = router

@@ -19,7 +19,6 @@ const newItem = (bodyFormData) => (dispatch) => {
   })
       .then((res) => {
     message.success(`${res.status}`, 2);
-    dispatch(actions.setItemsData(res.data));
     dispatch(actions.setItemsLoading(false));
   });
 };

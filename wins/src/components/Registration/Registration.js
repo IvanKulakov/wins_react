@@ -9,6 +9,7 @@ import './Registration.scss'
 import {message} from "antd";
 import {languageOperations} from "../../store/language";
 import {connect} from "react-redux";
+import actions from "../../store/user/actions";
 
 const Registration = ({ dispatch, language }) => {
     const uk ={
@@ -67,11 +68,11 @@ const Registration = ({ dispatch, language }) => {
           .string()
           .typeError(`${mainLang.error1}`)
           .required(`${mainLang.error2}`),
-    lastName: yup
+    lastname: yup
           .string()
           .typeError(`${mainLang.error1}`)
           .required(`${mainLang.error2}`),
-    telephone: yup
+    phone: yup
             .string()
             .required(`${mainLang.error2}`),
     password: yup
@@ -99,12 +100,14 @@ const Registration = ({ dispatch, language }) => {
       .then((response) => {
         if (response.status === 200)
             localStorage.setItem('token', JSON.stringify(response.data.token));
+            dispatch(actions.setCustomerData(response.data.user_res));
 
-            // hist.push('/api/user/auth');
-        message.success('Спасибо за регистрацию!', 2);
+       message.success('Спасибо за регистрацию!', 2)
+                // hist('/');
       })
-      .catch((error) => {
-        message.error(`${error.response.data.message}`, 2);
+      .catch((response) => {
+          console.log(response.response.data.message)
+        message.error(`${response.response.data.message}`, 2);
       });
   };
   return (
@@ -112,8 +115,8 @@ const Registration = ({ dispatch, language }) => {
       <Formik
         initialValues={{
           name: '',
-          lastName: '',
-          telephone: '',
+          lastname: '',
+          phone: '',
           email: '',
           password: '',
         }}
@@ -146,13 +149,13 @@ const Registration = ({ dispatch, language }) => {
                           <input
                               placeholder={mainLang.lastname}
                               type="text"
-                              name="lastName"
+                              name="lastname"
                               onChange={handleChange}
                               onBlur={handleBlur}
-                              value={values.lastName}
+                              value={values.lastname}
                           />
-                          {touched.lastName && errors.lastName && (
-                              <p className="error__message error__message--reg">{errors.lastName}</p>
+                          {touched.lastname && errors.lastname && (
+                              <p className="error__message error__message--reg">{errors.lastname}</p>
                           )}
                       </div>
                       <div>
@@ -162,13 +165,13 @@ const Registration = ({ dispatch, language }) => {
                               mask="_"
                               placeholder={mainLang.phone}
                               type="telephone"
-                              name="telephone"
+                              name="phone"
                               onChange={handleChange}
                               onBlur={handleBlur}
-                              value={values.telephone}
+                              value={values.phone}
                           />
-                          {touched.telephone && errors.telephone && (
-                              <p className="error__message error__message--reg">{errors.telephone}</p>
+                          {touched.phone && errors.phone && (
+                              <p className="error__message error__message--reg">{errors.phone}</p>
                           )}
                       </div>
                   </div>

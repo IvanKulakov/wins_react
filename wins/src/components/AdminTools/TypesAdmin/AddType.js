@@ -1,18 +1,19 @@
 import React, { useState } from 'react';
 import { Button, Input } from 'antd';
 import { connect } from 'react-redux';
-import {typeOperations} from "../../store/type";
+import {typeOperations} from "../../../store/type";
 
-const AddType = ({ dispatch }) => {
+const AddType = ({ dispatch , token}) => {
   const [name, setName] = useState('');
   const addNewType = () => {
     const newType = {
-      name: name,
+      name: name.toLowerCase(),
     };
     dispatch(typeOperations.newType(newType));
+    dispatch(typeOperations.getType())
   };
   return (
-    <div>
+    <div className="wrapper">
       <h2>Добавить новый тип</h2>
       <div>
         <Input placeholder="name" value={name} onInput={(e) => setName(e.target.value)} />
@@ -21,4 +22,11 @@ const AddType = ({ dispatch }) => {
     </div>
   );
 };
-export default connect(null)(AddType);
+const mapStateToProps = (state) => {
+    return {
+        language: state.language.data,
+        token: state.token.data,
+    };
+};
+
+export default connect(mapStateToProps) (AddType);

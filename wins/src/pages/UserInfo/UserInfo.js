@@ -6,23 +6,15 @@ import {connect} from "react-redux";
 import axios from "axios";
 import {tokenOperations} from "../../store/token";
 
-function UserInfo({ dispatch, token, user }) {
-        useEffect(() => {
-            const tokenAuth = JSON.parse(localStorage.getItem('token'));
-            if (tokenAuth) {
-                axios.defaults.headers.common.Authorization = tokenAuth;
-                dispatch(customerOperations.getCustomer())
-            }
-            // else {
-            //     axios.defaults.headers.common.Authorization = null;
-            // }
-            dispatch(tokenOperations.getToken());
-        }, [dispatch]);
+function UserInfo({ user }) {
+
+    const {name, lastname} = user;
     const {role} = user;
     return (
         <div className="wrapper">
             <Header />
-           <p>userInfo</p>
+           <p>Доброго дня {name} {lastname}!!</p>
+
             <div>
                 {role === "ADMIN" ? (
                     <Link to="/admin">

@@ -8,7 +8,7 @@ import {
 import Main from "../pages/Main/Main";
 import DeliveryPayment from "../pages/Delivery&payment/DeliveryPayment";
 import NotFound from "../pages/NotFound/NotFound";
-import AdminTool from "../pages/Admin/AdminTool";
+import AdminTool from "../components/AdminTools/Admin/AdminTool";
 import Login from "../pages/LoginList/LoginList";
 import {connect} from "react-redux";
 import {tokenOperations} from "../store/token";
@@ -23,6 +23,9 @@ import PaymentPage from "../pages/Payment/PaymentPage";
 import ExchangePage from "../pages/ Exchange/ExchangePage";
 import ContactsPage from "../pages/Contacts/ContactsPage";
 import CertificatePage from "../pages/Сertificate/CertificatePage";
+import TypesAdmin from "../components/AdminTools/TypesAdmin/TypesAdmin";
+import BrandsAdmin from "../components/AdminTools/BrandsAdmin/BrandsAdmin";
+import ProductAdmin from "../components/AdminTools/ProductAdmin/ProductAdmin";
 
 function AppRoutes({ dispatch, user, token }) {
     useEffect(() => {
@@ -54,6 +57,24 @@ function AppRoutes({ dispatch, user, token }) {
                 <Route path='/admin' element={
                     <ProtectedRoutes user={user}>
                         <AdminTool />
+                    </ProtectedRoutes>
+                }
+                />
+                <Route path='/admin/brands' element={
+                    <ProtectedRoutes user={user}>
+                        <BrandsAdmin />
+                    </ProtectedRoutes>
+                }
+                />
+                <Route path='/admin/types' element={
+                    <ProtectedRoutes user={user}>
+                        <TypesAdmin />
+                    </ProtectedRoutes>
+                }
+                />
+                <Route path='/admin/products' element={
+                    <ProtectedRoutes user={user}>
+                        <ProductAdmin />
                     </ProtectedRoutes>
                 }
                 />
