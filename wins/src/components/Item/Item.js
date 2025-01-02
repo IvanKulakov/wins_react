@@ -1,16 +1,17 @@
 import React from 'react';
 import './Item.scss'
 import Stars from "../Stars/Stars";
+import {Link, useNavigate} from "react-router";
+import {useLocation} from "react-router-dom";
 
 function Item ({item}) {
-    const {name, price, img} = item;
+    const {name, price, img, id} = item;
+    const link = useLocation().pathname;
     return(
         <div className="item">
+            <Link to={link+'/'+id}>
             <img src={process.env.REACT_APP_SERVER + img} className="item_img"/>
-            {/*    <div className="label_new">*/}
-            {/*        <p className="label_new_p">NEW</p>*/}
-            {/*    </div>*/}
-            {/*</img>*/}
+            </Link>
             <p className="item_title">{name}</p>
             <Stars />
             <p className="item_availability">

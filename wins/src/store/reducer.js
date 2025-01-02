@@ -1,6 +1,7 @@
 import {combineReducers} from "redux";
 
 import itemsReducer from "./items";
+import itemReducer from "./item";
 import brandsReducer from "./brands";
 import tokenReducer from "./token";
 import customerReducer from "./user";
@@ -10,6 +11,7 @@ import languageReducer from "./language";
 
 const reducer = combineReducers({
     items: itemsReducer,
+    item: itemReducer,
     brands: brandsReducer,
     type: typeReducer,
     token: tokenReducer,

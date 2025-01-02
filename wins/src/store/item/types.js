@@ -1,0 +1,9 @@
+const SET_ITEM_DATA = 'wins/item/SET_ITEM_DATA';
+const SET_ITEM_LOADING = 'wins/item/SET_ITEM_LOADING';
+const SET_TOTAL_ITEM_COUNT = 'wins/item/SET_TOTAL_ITEM_COUNT';
+
+export default {
+  SET_ITEM_DATA,
+  SET_ITEM_LOADING,
+  SET_TOTAL_ITEM_COUNT,
+};

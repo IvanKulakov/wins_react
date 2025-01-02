@@ -6,21 +6,21 @@ import {itemsOperations} from "../../store/items";
 import {languageOperations} from "../../store/language";
 
 
-function NewMin ({dispatch, item}) {
+function NewMin ({dispatch, items}) {
     useEffect(()=>{
         dispatch(itemsOperations.getItems());
         dispatch(languageOperations.getLanguage())
 
     }, [dispatch])
 
-    if (!item){
+    if (!items){
         return (
             <div>
                 <p>no items</p>
             </div>
         )
     }
-    const itemRender =  item.map((i) => {
+    const itemRender =  items.map((i) => {
         return <Item item={i} key={i.id} />}
     )
     return(
@@ -37,7 +37,7 @@ function NewMin ({dispatch, item}) {
 
 const mapStateToProps = (state) => {
     return {
-        item: state.items.data.rows,
+        items: state.items.data.rows,
         language: state.language.data,
 
     };

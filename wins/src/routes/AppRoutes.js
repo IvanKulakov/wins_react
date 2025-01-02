@@ -26,6 +26,7 @@ import CertificatePage from "../pages/Сertificate/CertificatePage";
 import TypesAdmin from "../components/AdminTools/TypesAdmin/TypesAdmin";
 import BrandsAdmin from "../components/AdminTools/BrandsAdmin/BrandsAdmin";
 import ProductAdmin from "../components/AdminTools/ProductAdmin/ProductAdmin";
+import ItemOpen from "../pages/ItemOpen/ItemOpen";
 
 function AppRoutes({ dispatch, user, token }) {
     useEffect(() => {
@@ -45,6 +46,7 @@ function AppRoutes({ dispatch, user, token }) {
         <Router>
             <Routes>
                 <Route path='/main' element={<Main />}/>
+                <Route path='/main/:id' element={<ItemOpen />}/>
                 <Route path="/" element={<Navigate replace to="/main" />} />
                 <Route path="/login" element={isAuth ? <Navigate to="/userInfo"/> : <Login />} />
                 <Route path="/registration" element={isAuth ? <Navigate to="/userInfo"/> : <RegistartionList />} />
