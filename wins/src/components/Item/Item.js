@@ -5,7 +5,7 @@ import {Link, useNavigate} from "react-router";
 import {useLocation} from "react-router-dom";
 
 function Item ({item}) {
-    const {name, price, img, id} = item;
+    const {name, price, img, stars, id} = item;
     const link = useLocation().pathname;
     return(
         <div className="item">
@@ -13,7 +13,7 @@ function Item ({item}) {
             <img src={process.env.REACT_APP_SERVER + img} className="item_img"/>
             </Link>
             <p className="item_title">{name}</p>
-            <Stars />
+            <Stars stars={stars}/>
             <p className="item_availability">
                 В наявності
             </p>
